@@ -1,0 +1,73 @@
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
+import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+
+const capabilities = ["기업", "브랜드", "매장 · 지점", "서비스 · 플랫폼", "랜딩페이지"];
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden border-b border-line bg-paper pt-16 pb-24 md:pt-24 md:pb-32">
+      <Container>
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+          <div>
+            <Reveal>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Web Development Studio</p>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <h1 className="mt-6 text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-[4.25rem]">
+                비즈니스를 위한
+                <br />
+                웹사이트를 만듭니다.
+              </h1>
+            </Reveal>
+
+            <Reveal delay={160}>
+              <p className="mt-7 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
+                기업 홈페이지부터 브랜드, 매장, 서비스까지
+                <br className="hidden sm:block" />
+                기획부터 개발·배포까지 함께합니다.
+              </p>
+            </Reveal>
+
+            <Reveal delay={240}>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Button href="/#contact" size="lg" showArrow>
+                  프로젝트 문의하기
+                </Button>
+                <Button href="/#projects" size="lg" variant="secondary">
+                  포트폴리오 보기
+                </Button>
+              </div>
+            </Reveal>
+
+            <Reveal delay={320}>
+              <p className="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-wide text-ink-faint">
+                {capabilities.map((item, i) => (
+                  <span key={item} className="flex items-center gap-3">
+                    {item}
+                    {i < capabilities.length - 1 ? (
+                      <span aria-hidden="true" className="text-line-strong">
+                        ·
+                      </span>
+                    ) : null}
+                  </span>
+                ))}
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200}>
+            <div className="relative pb-10 pl-0 sm:pb-14 sm:pl-8">
+              <PlaceholderMedia label="Selected Project" sublabel="PC" aspect="video" />
+              <div className="absolute -bottom-2 -left-2 w-2/5 ring-8 ring-paper drop-shadow-xl sm:bottom-0 sm:left-0 sm:w-1/3">
+                <PlaceholderMedia label="Mobile" aspect="portrait" />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
+  );
+}
