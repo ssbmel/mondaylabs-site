@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { aboutHighlights } from "@/data/site";
 
 export function About() {
   return (
@@ -23,6 +24,18 @@ export function About() {
           제작합니다.
         </p>
       </Reveal>
+
+      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 border-t border-line pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        {aboutHighlights.map((item, i) => (
+          <Reveal key={item.title} delay={240 + i * 60}>
+            <div>
+              <span className="font-mono text-sm text-ink-faint">{item.index}</span>
+              <h3 className="mt-3 text-lg font-medium tracking-tight text-ink">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.description}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
     </Section>
   );
 }

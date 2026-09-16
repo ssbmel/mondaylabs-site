@@ -3,15 +3,39 @@ import type { NavItem, ProcessStep, ServiceItem, WhyUsItem } from "@/lib/types";
 export const siteConfig = {
   name: "먼데이랩스",
   shortName: "MondayLabs",
-  seoTitle: "웹사이트 제작 · 홈페이지 제작 외주 전문 | 먼데이랩스",
-  tagline: "비즈니스를 위한 웹사이트를 만듭니다.",
+  seoTitle: "웹사이트·앱 개발 외주 제작 전문 | 먼데이랩스",
   description:
-    "기업, 브랜드, 매장, 서비스까지 업종 제한 없이 기획부터 디자인, 개발, 배포까지 진행하는 웹사이트 제작·홈페이지 제작 외주 전문 스튜디오입니다.",
+    "기업, 브랜드, 매장, 서비스까지 업종 제한 없이 기획부터 디자인, 개발, 배포까지 진행하는 웹사이트·앱 개발 외주 전문 스튜디오입니다.",
   email: "hello@example.com",
   phone: "02-0000-0000",
   businessRegistrationNumber: "000-00-00000",
   address: "서울특별시 (주소 Placeholder)",
 };
+
+export const aboutHighlights: ServiceItem[] = [
+  {
+    index: "01",
+    title: "빠르고 원활한 피드백",
+    description: "요청과 피드백을 주고받는 과정에서 막힘 없이, 빠르고 명확하게 소통하며 프로젝트를 진행합니다.",
+  },
+  {
+    index: "02",
+    title: "실제 개발자가 직접 개발",
+    description:
+      "AI로 찍어내는 바이브 코딩이 아닌, 실력있는 개발자가 코드를 직접 작성해 예상치 못한 오류와 보안 위험 없이 안정적인 결과물을 제공합니다.",
+  },
+  {
+    index: "03",
+    title: "디테일까지 놓치지 않는 반응형",
+    description: "PC, 태블릿, 모바일 등 모든 화면에서 자연스럽게 보이도록 작은 디테일까지 꼼꼼하게 다듬어 제작합니다.",
+  },
+  {
+    index: "04",
+    title: "보안 헤더까지 꼼꼼하게 점검",
+    description:
+      "많은 사이트가 놓치기 쉬운 보안 헤더 설정까지 꼼꼼하게 점검하고 적용해, securityheaders.com 기준 A등급을 받는 안전한 웹사이트를 제작합니다.",
+  },
+];
 
 export const navItems: NavItem[] = [
   { label: "About", href: "/#about" },
@@ -45,6 +69,11 @@ export const services: ServiceItem[] = [
     index: "05",
     title: "랜딩페이지",
     description: "광고, 프로모션, 신규 서비스 등을 위한 목적 중심 페이지",
+  },
+  {
+    index: "06",
+    title: "앱 개발",
+    description: "iOS / Android 등 비즈니스에 필요한 모바일 앱 기획부터 개발까지",
   },
 ];
 

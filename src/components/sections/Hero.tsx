@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 
-const capabilities = ["기업", "브랜드", "매장 · 지점", "서비스 · 플랫폼", "랜딩페이지"];
+const capabilities = ["기업", "브랜드", "매장 · 지점", "서비스 · 플랫폼", "랜딩페이지", "앱 개발"];
 
 export function Hero() {
   return (

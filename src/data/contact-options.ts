@@ -6,6 +6,7 @@ export const projectTypeOptions: ProjectType[] = [
   "매장 홈페이지",
   "랜딩페이지",
   "웹서비스",
+  "앱 개발",
   "기타",
 ];
 
