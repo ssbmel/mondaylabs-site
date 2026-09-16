@@ -1,11 +1,12 @@
 import type { NavItem, ProcessStep, ServiceItem, WhyUsItem } from "@/lib/types";
 
 export const siteConfig = {
-  name: "STUDIO NAME",
-  shortName: "STUDIO",
+  name: "먼데이랩스",
+  shortName: "MondayLabs",
+  seoTitle: "웹사이트 제작 · 홈페이지 제작 외주 전문 | 먼데이랩스",
   tagline: "비즈니스를 위한 웹사이트를 만듭니다.",
   description:
-    "기업, 브랜드, 매장, 서비스까지 업종 제한 없이 기획부터 디자인, 개발, 배포까지 진행하는 웹 개발 스튜디오입니다.",
+    "기업, 브랜드, 매장, 서비스까지 업종 제한 없이 기획부터 디자인, 개발, 배포까지 진행하는 웹사이트 제작·홈페이지 제작 외주 전문 스튜디오입니다.",
   email: "hello@example.com",
   phone: "02-0000-0000",
   businessRegistrationNumber: "000-00-00000",
