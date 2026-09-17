@@ -16,18 +16,18 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={80}>
-              <h1 className="mt-6 text-5xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-6xl lg:text-[4.25rem]">
-                비즈니스를 위한
+              <h1 className="mt-6 text-4xl font-semibold leading-[1.2] tracking-tight text-ink sm:text-6xl lg:text-[4.25rem]">
+                고객 경험은 살리고,
                 <br />
-                웹사이트를 만듭니다.
+                운영은 편리하게.
               </h1>
             </Reveal>
 
             <Reveal delay={160}>
               <p className="mt-7 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
                 기업 홈페이지부터 브랜드, 매장, 서비스까지
-                <br className="hidden sm:block" />
-                기획부터 개발·배포까지 함께합니다.
+                <br />
+                기획·개발·배포 모두 함께합니다.
               </p>
             </Reveal>
 
@@ -43,18 +43,21 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={320}>
-              <p className="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-wide text-ink-faint">
+              <div className="mt-12 flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-wide text-ink-faint sm:gap-x-3 sm:gap-y-2">
                 {capabilities.map((item, i) => (
-                  <span key={item} className="flex items-center gap-3">
+                  <span
+                    key={item}
+                    className="flex items-center gap-3 rounded-full border border-line px-3 py-1 sm:border-0 sm:px-0 sm:py-0"
+                  >
                     {item}
                     {i < capabilities.length - 1 ? (
-                      <span aria-hidden="true" className="text-line-strong">
+                      <span aria-hidden="true" className="hidden text-line-strong sm:inline">
                         ·
                       </span>
                     ) : null}
                   </span>
                 ))}
-              </p>
+              </div>
             </Reveal>
           </div>
 

@@ -14,7 +14,7 @@ export function ContactSection() {
           <Reveal delay={80}>
             <h2
               id="contact-heading"
-              className="mt-6 max-w-md text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-5xl"
+              className="mt-6 max-w-lg text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-5xl"
             >
               프로젝트를 시작해보세요.
             </h2>

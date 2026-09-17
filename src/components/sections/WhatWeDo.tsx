@@ -9,8 +9,8 @@ export function WhatWeDo() {
       <SectionHeading
         eyebrow="What We Do"
         headingId="what-we-do-heading"
-        title="업종에 상관없이, 필요한 웹사이트를 만듭니다."
-        description="기업, 브랜드, 매장, 서비스까지 — 목적에 맞는 구조와 기능으로 설계합니다."
+        title={`업종에 상관없이,\n비즈니스에 맞춰드립니다.`}
+        description={`비즈니스에 필요한 기능을 개선하고,\n쌓아온 노하우로 맞춤 설계합니다.`}
       />
 
       <ul className="mt-16 border-t border-line">

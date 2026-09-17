@@ -10,7 +10,7 @@ export function Process() {
         eyebrow="Process"
         headingId="process-heading"
         title="이렇게 진행됩니다."
-        description="상담부터 배포까지, 하나로 이어지는 과정으로 프로젝트를 진행합니다."
+        description={`상담부터 유지보수까지, 하나로 이어지는 과정으로\n프로젝트를 진행합니다.`}
       />
 
       {/* Mobile / Tablet: vertical timeline */}
@@ -32,7 +32,7 @@ export function Process() {
       </ol>
 
       {/* Desktop: connected horizontal steps */}
-      <ol className="relative mt-20 hidden lg:grid lg:grid-cols-6 lg:gap-4">
+      <ol className="relative mt-20 hidden lg:grid lg:grid-cols-7 lg:gap-4">
         <div
           aria-hidden="true"
           className="absolute top-5 h-px bg-line"
@@ -46,7 +46,14 @@ export function Process() {
               </span>
               <div>
                 <h3 className="text-base font-medium tracking-tight text-ink">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                  {step.description.split("\n").map((line, i, lines) => (
+                    <span key={i}>
+                      {line}
+                      {i < lines.length - 1 ? <br /> : null}
+                    </span>
+                  ))}
+                </p>
               </div>
             </li>
           </Reveal>

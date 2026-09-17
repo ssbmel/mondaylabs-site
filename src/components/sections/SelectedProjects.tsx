@@ -12,8 +12,8 @@ export function SelectedProjects() {
       <SectionHeading
         eyebrow="Selected Projects"
         headingId="selected-projects-heading"
-        title="실제로 만든 프로젝트입니다."
-        description="기획부터 개발, 배포까지 직접 진행한 프로젝트를 소개합니다."
+        title={`실제로 만든 사이트에서\n확인해보세요.`}
+        description="업종과 규모는 다양하지만, 완성도는 같습니다."
       />
 
       <div className="mt-16 flex flex-col gap-24 md:gap-28">

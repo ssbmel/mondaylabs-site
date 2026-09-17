@@ -12,28 +12,44 @@ export const siteConfig = {
   address: "서울특별시 (주소 Placeholder)",
 };
 
-export const aboutHighlights: ServiceItem[] = [
+export const strengths: WhyUsItem[] = [
   {
-    index: "01",
-    title: "빠르고 원활한 피드백",
-    description: "요청과 피드백을 주고받는 과정에서 막힘 없이, 빠르고 명확하게 소통하며 프로젝트를 진행합니다.",
-  },
-  {
-    index: "02",
     title: "실제 개발자가 직접 개발",
     description:
-      "AI로 찍어내는 바이브 코딩이 아닌, 실력있는 개발자가 코드를 직접 작성해 예상치 못한 오류와 보안 위험 없이 안정적인 결과물을 제공합니다.",
+      "AI로 찍어내는 바이브 코딩이 아닌, 실력있는 개발자가\n코드를 직접 작성해 예상치 못한 오류와 보안 위험 없이\n안정적인 결과물을 제공합니다.",
   },
   {
-    index: "03",
+    title: "기획부터 배포·유지보수까지 한 번에",
+    description: "여러 업체를 거칠 필요 없이 기획, 디자인, 개발, 배포,\n유지보수까지 한 팀이 책임집니다.",
+  },
+  {
+    title: "비즈니스에 맞춘 커스텀 기능",
+    description: "정해진 틀이 아니라 비즈니스 요구사항에 맞춰\n필요한 기능을 설계하고 개발합니다.",
+  },
+  {
     title: "디테일까지 놓치지 않는 반응형",
-    description: "PC, 태블릿, 모바일 등 모든 화면에서 자연스럽게 보이도록 작은 디테일까지 꼼꼼하게 다듬어 제작합니다.",
+    description: "PC, 태블릿, 모바일 등 모든 화면에서 자연스럽게 보이도록\n작은 디테일까지 꼼꼼하게 다듬어 제작합니다.",
   },
   {
-    index: "04",
+    title: "검색 노출을 고려한 개발",
+    description: "네이버, 구글 검색에 노출될 수 있도록 기본적인 SEO 요소를\n고려해 개발합니다.",
+  },
+  {
     title: "보안 헤더까지 꼼꼼하게 점검",
     description:
-      "많은 사이트가 놓치기 쉬운 보안 헤더 설정까지 꼼꼼하게 점검하고 적용해, securityheaders.com 기준 A등급을 받는 안전한 웹사이트를 제작합니다.",
+      "많은 사이트가 놓치기 쉬운 보안 헤더 설정까지 꼼꼼하게\n점검하고 적용해, 보안점검사이트 기준 A등급을 받는 안전한\n웹사이트를 제작합니다.",
+  },
+  {
+    title: "실제 운영 환경을 고려한 개발",
+    description: "만들고 끝나는 것이 아니라 실제로 운영되는 상황을 고려해\n안정적으로 개발합니다.",
+  },
+  {
+    title: "관리자 페이지 제작 가능",
+    description: "필요한 경우 콘텐츠와 데이터를 직접 관리할 수 있는\n관리자 페이지도 함께 구축합니다.",
+  },
+  {
+    title: "빠르고 원활한 피드백",
+    description: "요청과 피드백을 주고받는 과정에서 막힘 없이,\n빠르고 명확하게 소통하며 프로젝트를 진행합니다.",
   },
 ];
 
@@ -58,7 +74,7 @@ export const services: ServiceItem[] = [
   {
     index: "03",
     title: "매장 / 지점 홈페이지",
-    description: "헬스장, 학원, 병원, 매장 등 오프라인 사업자를 위한 홈페이지",
+    description: "학원, 병원, 매장 등 오프라인 사업자를 위한 홈페이지",
   },
   {
     index: "04",
@@ -73,42 +89,16 @@ export const services: ServiceItem[] = [
   {
     index: "06",
     title: "앱 개발",
-    description: "iOS / Android 등 비즈니스에 필요한 모바일 앱 기획부터 개발까지",
+    description: "iOS / Android 등 비즈니스에 필요한 모바일 앱 개발까지",
   },
 ];
 
 export const processSteps: ProcessStep[] = [
-  { index: "01", title: "상담", description: "필요한 홈페이지와 기능을 확인합니다." },
-  { index: "02", title: "견적", description: "기능과 작업 범위를 기준으로 견적을 안내합니다." },
-  { index: "03", title: "기획 / 디자인", description: "페이지 구성과 디자인 방향을 결정합니다." },
-  { index: "04", title: "개발", description: "PC / 모바일 환경에 맞춰 개발합니다." },
-  { index: "05", title: "검수", description: "실제 사이트를 확인하고 수정사항을 반영합니다." },
-  { index: "06", title: "배포", description: "도메인 연결 및 실제 서비스 배포를 진행합니다." },
-];
-
-export const whyUsItems: WhyUsItem[] = [
-  {
-    title: "기본으로 제공되는 반응형",
-    description: "PC와 모바일 어디서 접속해도 자연스럽게 보이는 화면을 기본으로 제작합니다.",
-  },
-  {
-    title: "기획부터 배포까지 한 번에",
-    description: "여러 업체를 거칠 필요 없이 기획, 디자인, 개발, 배포를 한 팀이 책임집니다.",
-  },
-  {
-    title: "관리자 페이지 제작 가능",
-    description: "필요한 경우 콘텐츠와 데이터를 직접 관리할 수 있는 관리자 페이지도 함께 구축합니다.",
-  },
-  {
-    title: "검색 노출을 고려한 개발",
-    description: "네이버, 구글 검색에 노출될 수 있도록 기본적인 SEO 요소를 고려해 개발합니다.",
-  },
-  {
-    title: "실제 운영 환경을 고려한 개발",
-    description: "만들고 끝나는 것이 아니라 실제로 운영되는 상황을 고려해 안정적으로 개발합니다.",
-  },
-  {
-    title: "비즈니스에 맞춘 커스텀 기능",
-    description: "정해진 틀이 아니라 비즈니스 요구사항에 맞춰 필요한 기능을 설계하고 개발합니다.",
-  },
+  { index: "01", title: "상담", description: "필요한 홈페이지와\n기능을 확인합니다." },
+  { index: "02", title: "견적", description: "기능과 작업 범위를 기준으로\n견적을 안내합니다." },
+  { index: "03", title: "기획 / 디자인", description: "페이지 구성과 디자인 방향을\n결정합니다." },
+  { index: "04", title: "개발", description: "PC / 모바일 환경에 맞춰\n개발합니다." },
+  { index: "05", title: "검수", description: "실제 사이트를 확인하고\n수정사항을 반영합니다." },
+  { index: "06", title: "배포", description: "도메인 연결 및 서비스 배포를\n진행합니다." },
+  { index: "07", title: "유지보수", description: "배포 이후에도 운영 관리와\n대응을 이어갑니다." },
 ];
