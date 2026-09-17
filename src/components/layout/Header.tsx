@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { navItems, siteConfig } from "@/data/site";
+import { BrandLogo } from "../ui/Logo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export function Header() {
               className="font-mono text-sm font-semibold tracking-tight text-ink"
               onClick={() => setOpen(false)}
             >
-              {siteConfig.shortName}
+              <BrandLogo />
             </Link>
 
             <nav className="hidden items-center gap-8 md:flex" aria-label="주요 메뉴">
