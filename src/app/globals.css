@@ -83,6 +83,8 @@
   --font-brand: "Google Sans Flex", var(--font-sans);
 
   --container-page: 1360px;
+
+  --breakpoint-lg: 1094px;
 }
 
 html {

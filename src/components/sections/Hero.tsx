@@ -7,7 +7,7 @@ const capabilities = ["기업", "브랜드", "매장 · 지점", "서비스 · �
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-line bg-paper pt-16 pb-24 md:pt-24 md:pb-32">
+    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-paper pt-16 pb-24 md:pb-32 lg:pt-0">
       <Container>
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
