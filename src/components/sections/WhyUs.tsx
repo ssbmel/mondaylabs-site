@@ -14,7 +14,7 @@ export function WhyUs() {
         description={`먼데이랩스는 디테일도 보안도 놓치지 않고,\n완벽하게 마무리합니다.`}
       />
 
-      <div className="mt-16 grid grid-cols-1 gap-x-14 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid grid-cols-1 gap-x-14 gap-y-12 sm:grid-cols-2 md:grid-cols-3">
         {strengths.map((item, i) => (
           <Reveal key={item.title} delay={i * 60}>
             <div className="border-t border-line pt-8">

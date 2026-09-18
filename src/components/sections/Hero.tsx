@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
 
 const capabilities = ["기업", "브랜드", "매장 · 지점", "서비스 · 플랫폼", "랜딩페이지", "앱 개발"];
 
@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-paper pt-16 pb-24 md:pb-32 lg:pt-0">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-3">
           <div>
             <Reveal>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Web Development Studio</p>
@@ -62,11 +62,15 @@ export function Hero() {
           </div>
 
           <Reveal delay={200}>
-            <div className="relative pb-10 pl-0 sm:pb-14 sm:pl-8">
-              <PlaceholderMedia label="Selected Project" sublabel="PC" aspect="video" />
-              <div className="absolute -bottom-2 -left-2 w-2/5 ring-8 ring-paper drop-shadow-xl sm:bottom-0 sm:left-0 sm:w-1/3">
-                <PlaceholderMedia label="Mobile" aspect="portrait" />
-              </div>
+            <div className="aspect-4/3 w-full lg:h-[60vh]">
+              <Image
+                src="/landing.png"
+                alt="먼데이랩스가 만든 웹사이트 랜딩 페이지 목업"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-contain"
+                priority
+              />
             </div>
           </Reveal>
         </div>
