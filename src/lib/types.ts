@@ -41,6 +41,7 @@ export interface Project {
   status: ProjectStatus;
   summary: string;
   heroImage?: string;
+  liveUrl?: string;
   overview: string;
   challenge: string;
   solution: string;

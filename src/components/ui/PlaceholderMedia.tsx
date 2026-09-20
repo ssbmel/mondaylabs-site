@@ -8,6 +8,7 @@ interface PlaceholderMediaProps {
   aspect?: Aspect;
   src?: string;
   alt?: string;
+  sizes?: string;
   className?: string;
 }
 
@@ -24,12 +25,13 @@ export function PlaceholderMedia({
   aspect = "video",
   src,
   alt,
+  sizes = "(min-width: 1024px) 50vw, 100vw",
   className = "",
 }: PlaceholderMediaProps) {
   if (src) {
     return (
       <div className={`relative overflow-hidden border border-line bg-paper-soft ${aspectClass[aspect]} ${className}`}>
-        <Image src={src} alt={alt ?? label} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+        <Image src={src} alt={alt ?? label} fill sizes={sizes} className="object-cover" />
       </div>
     );
   }

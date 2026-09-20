@@ -98,7 +98,13 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
 
       <Section tone="paper" aria-label="프로젝트 대표 이미지">
         <Reveal>
-          <PlaceholderMedia label={project.title} sublabel="Hero Image" src={project.heroImage} aspect="wide" />
+          <PlaceholderMedia
+            label={project.title}
+            sublabel="Hero Image"
+            src={project.heroImage}
+            aspect="wide"
+            sizes="(min-width: 1360px) 1280px, 100vw"
+          />
         </Reveal>
       </Section>
 
@@ -163,20 +169,42 @@ export default async function ProjectPage(props: PageProps<"/projects/[slug]">) 
         </div>
       </Section>
 
-      <Section tone="soft" aria-labelledby="gallery-heading">
-        <Reveal>
-          <h2 id="gallery-heading" className="text-2xl font-semibold tracking-tight text-ink">
-            Gallery
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {project.gallery.map((item, i) => (
-            <Reveal key={item.label} delay={i * 60} className={item.device === "PC" ? "sm:col-span-2" : undefined}>
-              <PlaceholderMedia label={item.label} sublabel={item.device} aspect={galleryAspect[item.device]} />
+      {project.liveUrl ? (
+        <Section tone="soft" aria-labelledby="live-heading">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-16">
+            <Reveal>
+              <h2 id="live-heading" className="text-2xl font-semibold tracking-tight text-ink">
+                Live Site
+              </h2>
             </Reveal>
-          ))}
-        </div>
-      </Section>
+            <Reveal delay={80} className="flex flex-col items-start gap-6 lg:col-span-2">
+              <p className="max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+                실제 운영 중인 사이트에서 직접 확인해보세요.
+              </p>
+              <Button href={project.liveUrl} external size="lg" showArrow>
+                사이트 방문하기
+              </Button>
+            </Reveal>
+          </div>
+        </Section>
+      ) : null}
+
+      {project.gallery.length > 0 ? (
+        <Section tone="soft" aria-labelledby="gallery-heading">
+          <Reveal>
+            <h2 id="gallery-heading" className="text-2xl font-semibold tracking-tight text-ink">
+              Gallery
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {project.gallery.map((item, i) => (
+              <Reveal key={item.label} delay={i * 60} className={item.device === "PC" ? "sm:col-span-2" : undefined}>
+                <PlaceholderMedia label={item.label} sublabel={item.device} aspect={galleryAspect[item.device]} />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      ) : null}
 
       <Section tone="paper" aria-labelledby="result-heading">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-16">

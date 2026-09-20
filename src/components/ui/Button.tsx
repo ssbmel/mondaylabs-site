@@ -16,6 +16,7 @@ interface SharedProps {
 
 interface ButtonAsLink extends SharedProps {
   href: string;
+  external?: boolean;
   onClick?: () => void;
 }
 
@@ -59,6 +60,14 @@ export function Button(props: ButtonProps) {
   );
 
   if (typeof props.href === "string") {
+    if (props.external) {
+      return (
+        <a href={props.href} target="_blank" rel="noopener noreferrer" className={classes}>
+          {content}
+        </a>
+      );
+    }
+
     return (
       <Link href={props.href} onClick={props.onClick} className={classes}>
         {content}
