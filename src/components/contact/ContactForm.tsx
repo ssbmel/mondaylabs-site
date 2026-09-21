@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ChangeEvent, FormEvent, ReactNode } from "react";
-import { budgetOptions, projectTypeOptions } from "@/data/contact-options";
+import { budgetOptions, emailDomainOptions, projectTypeOptions } from "@/data/contact-options";
 import { submitContactForm } from "@/lib/contact";
 import type { ContactFormErrors, ContactFormValues } from "@/lib/types";
 import { hasErrors, validateContactForm } from "@/lib/validation";
@@ -26,6 +26,13 @@ const inputClass =
 
 function fieldClass(hasError?: string) {
   return `${inputClass} ${hasError ? "border-danger focus:border-danger" : ""}`;
+}
+
+const CUSTOM_DOMAIN = "custom";
+
+function splitEmail(email: string): [string, string] {
+  const at = email.indexOf("@");
+  return at === -1 ? [email, ""] : [email.slice(0, at), email.slice(at + 1)];
 }
 
 interface FieldProps {
@@ -60,6 +67,9 @@ export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [status, setStatus] = useState<Status>("idle");
+  const [isCustomDomain, setIsCustomDomain] = useState(false);
+
+  const [emailId, emailDomain] = splitEmail(values.email);
 
   function updateField<K extends keyof ContactFormValues>(key: K, value: ContactFormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -69,6 +79,42 @@ export function ContactForm() {
   function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = event.target;
     updateField(name as keyof ContactFormValues, value as never);
+  }
+
+  function updateEmail(id: string, domain: string) {
+    updateField("email", id || domain ? `${id}@${domain}` : "");
+  }
+
+  // 붙여넣기·자동완성·직접 "@" 입력으로 전체 주소가 들어오면 아이디와 도메인으로 나눈다.
+  function handleEmailIdChange(event: ChangeEvent<HTMLInputElement>) {
+    const { value } = event.target;
+    const at = value.indexOf("@");
+
+    if (at === -1) {
+      updateEmail(value, emailDomain);
+      return;
+    }
+
+    const domain = value.slice(at + 1).replace(/@/g, "");
+    setIsCustomDomain(!emailDomainOptions.includes(domain));
+    updateEmail(value.slice(0, at), domain);
+  }
+
+  function handleEmailDomainSelect(event: ChangeEvent<HTMLSelectElement>) {
+    const { value } = event.target;
+
+    if (value === CUSTOM_DOMAIN) {
+      setIsCustomDomain(true);
+      updateEmail(emailId, "");
+      return;
+    }
+
+    setIsCustomDomain(false);
+    updateEmail(emailId, value);
+  }
+
+  function handleEmailDomainInput(event: ChangeEvent<HTMLInputElement>) {
+    updateEmail(emailId, event.target.value.replace(/@/g, ""));
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -95,6 +141,7 @@ export function ContactForm() {
     setValues(initialValues);
     setErrors({});
     setStatus("idle");
+    setIsCustomDomain(false);
   }
 
   if (status === "success") {
@@ -163,15 +210,48 @@ export function ContactForm() {
         </Field>
 
         <Field label="이메일" htmlFor="email" error={errors.email} required>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={values.email}
-            onChange={handleInputChange}
-            placeholder="example@email.com"
-            className={fieldClass(errors.email)}
-          />
+          <div className="flex items-center gap-2">
+            <input
+              id="email"
+              type="text"
+              value={emailId}
+              onChange={handleEmailIdChange}
+              placeholder="example"
+              className={`${fieldClass(errors.email)} min-w-0 flex-1`}
+            />
+            <span className="text-ink-faint" aria-hidden="true">
+              @
+            </span>
+            <div className="relative min-w-0 flex-1">
+              <select
+                aria-label="이메일 도메인 선택"
+                value={isCustomDomain ? CUSTOM_DOMAIN : emailDomain}
+                onChange={handleEmailDomainSelect}
+                className={`${fieldClass(errors.email)} appearance-none pr-10`}
+              >
+                <option value="" disabled>
+                  선택
+                </option>
+                {emailDomainOptions.map((domain) => (
+                  <option key={domain} value={domain}>
+                    {domain}
+                  </option>
+                ))}
+                <option value={CUSTOM_DOMAIN}>직접 입력</option>
+              </select>
+              <ChevronDownIcon className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-ink-faint" />
+            </div>
+          </div>
+          {isCustomDomain ? (
+            <input
+              type="text"
+              aria-label="이메일 도메인 직접 입력"
+              value={emailDomain}
+              onChange={handleEmailDomainInput}
+              placeholder="example.com"
+              className={`${fieldClass(errors.email)} mt-2`}
+            />
+          ) : null}
         </Field>
 
         <Field label="제작 유형" htmlFor="projectType" error={errors.projectType} required>
@@ -240,7 +320,7 @@ export function ContactForm() {
               value={values.message}
               onChange={handleInputChange}
               placeholder="필요한 기능, 참고하고 싶은 사이트, 그 외 요청사항을 자유롭게 남겨주세요."
-              className={fieldClass(errors.message)}
+              className={`resize-none ${fieldClass(errors.message)}`}
             />
           </Field>
         </div>

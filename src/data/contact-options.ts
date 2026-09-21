@@ -10,6 +10,17 @@ export const projectTypeOptions: ProjectType[] = [
   "기타",
 ];
 
+export const emailDomainOptions = [
+  "naver.com",
+  "gmail.com",
+  "daum.net",
+  "hanmail.net",
+  "kakao.com",
+  "nate.com",
+  "outlook.com",
+  "icloud.com",
+];
+
 export const budgetOptions: BudgetRange[] = [
   "100~300만원",
   "300~500만원",
