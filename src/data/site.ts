@@ -6,7 +6,7 @@ export const siteConfig = {
   seoTitle: "웹사이트·앱 개발 외주 제작 전문 | 먼데이랩스",
   description:
     "기업, 브랜드, 매장, 서비스까지 업종 제한 없이 기획부터 디자인, 개발, 배포까지 진행하는 웹사이트·앱 개발 외주 전문 스튜디오입니다.",
-  email: "hello@example.com",
+  email: "mondaylabs0132@gmail.com",
   phone: "02-0000-0000",
   businessRegistrationNumber: "000-00-00000",
   address: "서울특별시 (주소 Placeholder)",

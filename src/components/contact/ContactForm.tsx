@@ -305,7 +305,7 @@ export function ContactForm() {
             type="date"
             value={values.launchDate}
             onChange={handleInputChange}
-            className={fieldClass(errors.launchDate)}
+            className={`${fieldClass(errors.launchDate)} min-h-11.5 min-w-0 max-w-full appearance-none`}
           />
         </Field>
 
