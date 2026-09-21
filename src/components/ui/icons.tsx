@@ -63,6 +63,15 @@ export function ChevronDownIcon({ className = "size-4" }: IconProps) {
   );
 }
 
+export function CalendarIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className={className} aria-hidden="true">
+      <rect x="2" y="3.25" width="12" height="10.5" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M2 6.75h12M5.25 1.75v2.5M10.75 1.75v2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function SpinnerIcon({ className = "size-4" }: IconProps) {
   return (
     <svg viewBox="0 0 16 16" fill="none" className={`animate-spin ${className}`} aria-hidden="true">

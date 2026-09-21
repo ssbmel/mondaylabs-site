@@ -7,7 +7,7 @@ import { submitContactForm } from "@/lib/contact";
 import type { ContactFormErrors, ContactFormValues } from "@/lib/types";
 import { hasErrors, validateContactForm } from "@/lib/validation";
 import { Button } from "@/components/ui/Button";
-import { AlertIcon, CheckIcon, ChevronDownIcon } from "@/components/ui/icons";
+import { AlertIcon, CalendarIcon, CheckIcon, ChevronDownIcon } from "@/components/ui/icons";
 
 const initialValues: ContactFormValues = {
   companyName: "",
@@ -299,14 +299,17 @@ export function ContactForm() {
         </Field>
 
         <Field label="희망 오픈일" htmlFor="launchDate" error={errors.launchDate}>
-          <input
-            id="launchDate"
-            name="launchDate"
-            type="date"
-            value={values.launchDate}
-            onChange={handleInputChange}
-            className={`${fieldClass(errors.launchDate)} min-h-11.5 min-w-0 max-w-full appearance-none`}
-          />
+          <div className="relative">
+            <input
+              id="launchDate"
+              name="launchDate"
+              type="date"
+              value={values.launchDate}
+              onChange={handleInputChange}
+              className={`${fieldClass(errors.launchDate)} min-h-11.5 min-w-0 max-w-full appearance-none pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0`}
+            />
+            <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-ink-faint" />
+          </div>
         </Field>
 
         <div className="sm:col-span-2">
