@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { ChangeEvent, FormEvent, ReactNode } from "react";
+import type { ChangeEvent, FormEvent, MouseEvent, ReactNode } from "react";
 import { budgetOptions, emailDomainOptions, projectTypeOptions } from "@/data/contact-options";
 import { submitContactForm } from "@/lib/contact";
 import type { ContactFormErrors, ContactFormValues } from "@/lib/types";
@@ -26,6 +26,34 @@ const inputClass =
 
 function fieldClass(hasError?: string) {
   return `${inputClass} ${hasError ? "border-danger focus:border-danger" : ""}`;
+}
+
+// 숫자만 남겨 지역번호 / 국번 / 끝 4자리 순으로 하이픈을 넣는다. (02-000-0000, 010-0000-0000, 0507-0000-0000, 1588-0000)
+function formatPhone(input: string) {
+  const digits = input.replace(/^\+82\s*/, "0").replace(/\D/g, "");
+  const isRepresentative = /^1[5-8]/.test(digits);
+  const prefixLength = digits.startsWith("02") ? 2 : isRepresentative || /^050\d/.test(digits) ? 4 : 3;
+  const maxLength = isRepresentative ? 8 : prefixLength + 8;
+
+  const prefix = digits.slice(0, prefixLength);
+  const rest = digits.slice(prefixLength, maxLength);
+
+  if (rest.length <= 4) return rest ? `${prefix}-${rest}` : prefix;
+
+  // 국번이 3자리인 번호(010-123-4567)는 뒷자리 7자리일 때만 3-4로 나눈다.
+  const split = rest.length === 7 ? 3 : 4;
+  return `${prefix}-${rest.slice(0, split)}-${rest.slice(split)}`;
+}
+
+// appearance-none인 date 입력은 데스크탑 브라우저에 따라 눌러도 달력이 열리지 않아 입력칸 어디를 눌러도 직접 연다. (터치 기기는 기본 동작 사용)
+function openDatePicker(event: MouseEvent<HTMLInputElement>) {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+
+  try {
+    event.currentTarget.showPicker();
+  } catch {
+    // showPicker를 지원하지 않는 브라우저는 기본 동작에 맡긴다.
+  }
 }
 
 const CUSTOM_DOMAIN = "custom";
@@ -79,6 +107,10 @@ export function ContactForm() {
   function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = event.target;
     updateField(name as keyof ContactFormValues, value as never);
+  }
+
+  function handlePhoneChange(event: ChangeEvent<HTMLInputElement>) {
+    updateField("phone", formatPhone(event.target.value));
   }
 
   function updateEmail(id: string, domain: string) {
@@ -203,7 +235,7 @@ export function ContactForm() {
             name="phone"
             type="tel"
             value={values.phone}
-            onChange={handleInputChange}
+            onChange={handlePhoneChange}
             placeholder="010-0000-0000"
             className={fieldClass(errors.phone)}
           />
@@ -227,7 +259,7 @@ export function ContactForm() {
                 aria-label="이메일 도메인 선택"
                 value={isCustomDomain ? CUSTOM_DOMAIN : emailDomain}
                 onChange={handleEmailDomainSelect}
-                className={`${fieldClass(errors.email)} appearance-none pr-10`}
+                className={`${fieldClass(errors.email)} cursor-pointer appearance-none pr-10`}
               >
                 <option value="" disabled>
                   선택
@@ -261,7 +293,7 @@ export function ContactForm() {
               name="projectType"
               value={values.projectType}
               onChange={handleInputChange}
-              className={`${fieldClass(errors.projectType)} appearance-none pr-10`}
+              className={`${fieldClass(errors.projectType)} cursor-pointer appearance-none pr-10`}
             >
               <option value="" disabled>
                 선택해주세요
@@ -283,7 +315,7 @@ export function ContactForm() {
               name="budget"
               value={values.budget}
               onChange={handleInputChange}
-              className={`${fieldClass(errors.budget)} appearance-none pr-10`}
+              className={`${fieldClass(errors.budget)} cursor-pointer appearance-none pr-10`}
             >
               <option value="" disabled>
                 선택해주세요
@@ -306,7 +338,8 @@ export function ContactForm() {
               type="date"
               value={values.launchDate}
               onChange={handleInputChange}
-              className={`${fieldClass(errors.launchDate)} min-h-11.5 min-w-0 max-w-full appearance-none pr-10 [&::-webkit-calendar-picker-indicator]:opacity-0`}
+              onClick={openDatePicker}
+              className={`${fieldClass(errors.launchDate)} min-h-11.5 min-w-0 max-w-full cursor-pointer appearance-none pr-10 [&::-webkit-calendar-picker-indicator]:pointer-events-none [&::-webkit-calendar-picker-indicator]:opacity-0`}
             />
             <CalendarIcon className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-ink-faint" />
           </div>

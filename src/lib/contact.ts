@@ -4,14 +4,12 @@ export interface ContactSubmitResult {
   success: boolean;
 }
 
-// Placeholder submit handler — swap the body for a real API/email call later;
-// the form component only depends on this function's signature.
 export async function submitContactForm(values: ContactFormValues): Promise<ContactSubmitResult> {
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(values),
+  });
 
-  if (process.env.NODE_ENV === "development") {
-    console.log("[contact] submission (placeholder):", values);
-  }
-
-  return { success: true };
+  return { success: response.ok };
 }
