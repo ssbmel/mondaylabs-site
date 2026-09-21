@@ -298,18 +298,16 @@ export function ContactForm() {
           </div>
         </Field>
 
-        <div className="sm:col-span-2">
-          <Field label="희망 오픈일" htmlFor="launchDate" error={errors.launchDate}>
-            <input
-              id="launchDate"
-              name="launchDate"
-              type="date"
-              value={values.launchDate}
-              onChange={handleInputChange}
-              className={`${fieldClass(errors.launchDate)} sm:max-w-xs`}
-            />
-          </Field>
-        </div>
+        <Field label="희망 오픈일" htmlFor="launchDate" error={errors.launchDate}>
+          <input
+            id="launchDate"
+            name="launchDate"
+            type="date"
+            value={values.launchDate}
+            onChange={handleInputChange}
+            className={fieldClass(errors.launchDate)}
+          />
+        </Field>
 
         <div className="sm:col-span-2">
           <Field label="필요한 기능 / 참고 사이트 / 요청사항" htmlFor="message" error={errors.message}>

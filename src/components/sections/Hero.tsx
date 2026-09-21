@@ -62,7 +62,7 @@ export function Hero() {
           </div>
 
           <Reveal delay={200}>
-            <div className="aspect-4/3 w-full lg:h-[60vh]">
+            <div className="relative aspect-4/3 w-full lg:h-[60vh]">
               <Image
                 src="/landing.png"
                 alt="먼데이랩스가 만든 웹사이트 랜딩 페이지 목업"
